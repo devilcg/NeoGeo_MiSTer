@@ -31,6 +31,64 @@
 
 다른 버전은 열릴 수는 있지만, 타이밍/경고/출력 차이가 날 수 있습니다.
 
+### 공식 다운로드 링크
+
+- Windows 메인 페이지:
+  https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-17-0-windows
+- Linux 메인 페이지:
+  https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-17-0-linux
+- 디바이스 지원 버전표:
+  https://www.altera.com/design/guidance/software/device-support
+
+### NeoGeo 빌드용 권장 설치 조합
+
+NeoGeo_MiSTer는 Cyclone V 계열 MiSTer 타깃이므로, Windows에서는 아래 조합이 가장 실용적입니다.
+
+필수:
+- `Quartus Prime Software v17.0.2`
+  파일명 예: `QuartusSetup-17.0.2.602-windows.exe`
+- `Cyclone V Device Support`
+  파일명 예: `cyclonev-17.0.0.595.qdz`
+
+선택:
+- `ModelSim-FPGA Edition`
+  파일명 예: `ModelSimSetup-17.0.0.595-windows.exe`
+  시뮬레이션이 필요할 때만 설치
+
+대체 설치 방식:
+- `Quartus-lite-17.0.2.602-windows.tar`
+  device support 포함 통합 패키지
+  한 번에 받기엔 편하지만 용량이 큼
+
+### 추천 다운로드 방식
+
+가장 권장:
+1. `QuartusSetup-17.0.2.602-windows.exe`
+2. `cyclonev-17.0.0.595.qdz`
+
+둘을 같은 폴더에 내려받은 뒤 설치를 시작합니다.
+
+예:
+
+```bat
+C:\intel_fpga\download\
+  QuartusSetup-17.0.2.602-windows.exe
+  cyclonev-17.0.0.595.qdz
+```
+
+그 다음 `QuartusSetup-17.0.2.602-windows.exe` 실행
+
+### 설치 시 주의
+
+- 설치 경로에 공백을 넣지 않는 것이 안전합니다
+- 예:
+  - `C:\intelFPGA_lite\17.0`
+  - `D:\intelFPGA_lite\17.0`
+
+비권장:
+- `C:\Program Files\...`
+- 공백 포함 사용자 다운로드 임시 경로에서 바로 설치
+
 ## 3. 소스 준비
 
 Windows에 소스를 복사합니다.
