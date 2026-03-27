@@ -14,6 +14,16 @@
 - 충분한 디스크 여유 공간
 - 이 저장소 소스
 
+이 저장소에 포함된 Windows용 빌드 파일:
+
+- `clean_build.bat`
+- `clean.bat`
+- `NeoGeo.qpf`
+- `NeoGeo.qsf`
+- `NeoGeo_DualSDR.qpf`
+- `NeoGeo_DualSDR.qsf`
+- `neogeo.sv`
+
 권장:
 - 빌드 경로는 한글/공백 없는 짧은 경로
 - 예: `C:\work\NeoGeo_MiSTer`
@@ -106,6 +116,20 @@ C:\work\NeoGeo_MiSTer
 - 듀얼 SDRAM 프로젝트: [NeoGeo_DualSDR.qpf](/Users/gun/mister-fpg/NeoGeo_MiSTer/NeoGeo_DualSDR.qpf)
 - 메뉴 문자열: [neogeo.sv](/Users/gun/mister-fpg/NeoGeo_MiSTer/neogeo.sv)
 
+가장 간단한 시작 방법:
+
+1. 저장소를 Windows의 짧은 경로에 둡니다.
+2. Quartus command shell을 엽니다.
+3. 프로젝트 폴더로 이동합니다.
+4. `clean_build.bat`를 실행합니다.
+
+예:
+
+```bat
+cd /d C:\work\NeoGeo_MiSTer
+clean_build.bat
+```
+
 ## 4. 어떤 프로젝트를 빌드할지
 
 보통은 아래 둘 중 하나입니다.
@@ -131,6 +155,31 @@ C:\work\NeoGeo_MiSTer
 ## 6. CLI로 빌드하는 방법
 
 Quartus command shell 또는 일반 `cmd`에서 Quartus가 PATH에 잡혀 있으면 아래처럼 실행할 수 있습니다.
+
+### 가장 권장하는 방법: clean build 배치 파일 사용
+
+기본 프로젝트:
+
+```bat
+cd /d C:\work\NeoGeo_MiSTer
+clean_build.bat
+```
+
+듀얼 SDRAM 프로젝트:
+
+```bat
+cd /d C:\work\NeoGeo_MiSTer
+clean_build.bat NeoGeo_DualSDR
+```
+
+이 배치 파일은 다음을 자동으로 수행합니다.
+
+- `db` 삭제
+- `incremental_db` 삭제
+- `output_files` 삭제
+- `build_id.v` 삭제
+- `*.ddb`, `*.qws`, `*.bak` 삭제
+- `quartus_sh --flow compile ...` 실행
 
 ### 기본 프로젝트
 
@@ -180,12 +229,14 @@ output_files\NeoGeo_DualSDR.rbf
 
 - `Flow Status: Successful`
 - `output_files` 안에 `.rbf` 생성
+- `output_files\NeoGeo.rbf` 또는 `output_files\NeoGeo_DualSDR.rbf` 확인
 
 실패 시 먼저 볼 것:
 
 - Quartus 버전이 17.0.2인지
 - 소스 경로에 한글/공백이 있는지
 - 필요한 IP/QIP 파일이 다 있는지
+- Quartus shell에서 실행했는지
 
 ## 9. MiSTer SD 카드 반영
 
